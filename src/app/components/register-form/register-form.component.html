@@ -1,0 +1,50 @@
+<div class="container">
+  <h2>Register User</h2>
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-control">
+      <label for="userName">Username</label>
+      <input type="text" name="userName" [(ngModel)]="userName" id="userName" placeholder="Enter Username" (blur)="userNameOnBlur()">
+      <span class="errSpan" *ngIf="userNameErrMsg.length">{{userNameErrMsg}}</span>
+    </div>
+
+    <div class="form-control">
+      <label for="email">Email</label>
+      <input type="text" name="email" [(ngModel)]="email" id="email" placeholder="Enter Email" (blur)="emailOnBlur()">
+      <span class="errSpan" *ngIf="emailErrMsg.length">{{emailErrMsg}}</span>
+    </div>
+
+    <div class="form-control">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="date" name="dateOfBirth" [(ngModel)]="dateOfBirth" id="dateOfBirth" placeholder="Enter Date of Birth" (blur)="dobOnBlur()">
+      <span class="errSpan" *ngIf="dobErrMsg.length">{{dobErrMsg}}</span>
+    </div>
+
+    <div class="form-control">
+      <label for="password">Password</label>
+      <input class="password-inputs" type="password" name="password" [(ngModel)]="password" id="password" placeholder="Set your Password" (blur)="passwordOnBlur()">
+      <span class="passSpan" (click)="togglePasswordVisibility()">{{showOrHidePassword}}</span>
+      <span class="errSpan" [ngStyle]="{'color' : this.colorShadesForPasswordMsg}" *ngIf="passwordErrMsg.length">{{passwordErrMsg}}</span>
+    </div>
+
+    <div class="form-control">
+      <label for="reEnteredPassword">Confirm Password</label>
+      <input class="password-inputs" type="password" name="reEnteredPassword" [(ngModel)]="reEnteredPassword" id="reEnteredPassword" placeholder="Confirm your Password">
+      <span class="passSpan" (click)="toggleConfirmPasswordVisibility()">{{showOrHideConfirmPassword}}</span>
+    </div>
+
+    <input type="submit" value="Register" class="registerBtn">
+
+  </form>
+</div>
+
+<div class="errorBox" *ngIf="errorMessage.length">
+  <div class="closeBtn">
+    <mat-icon (click)="removeErrorBox()">close</mat-icon>
+  </div>
+  <div class="errorMsg">
+    {{errorMessage}}
+  </div>
+</div>
+
+

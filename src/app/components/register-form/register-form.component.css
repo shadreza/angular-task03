@@ -1,0 +1,104 @@
+.container {
+  text-align: center;
+  border: 2px solid black;
+  display: inline-block;
+  padding: 1.5rem 3rem;
+  border-radius: 5px;
+  min-width: 15rem;
+  max-width: 15rem;
+}
+
+.form-control {
+  width: 100%;
+  display: block;
+  margin-top: 25px;
+  text-align: left;
+}
+
+.form-control label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.form-control input {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+}
+
+.form-control input:focus {
+  outline: none !important;
+  border: 1px solid #719ECE;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.errorBox {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 200px;
+  padding: 1rem;
+  background: #ff9966;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.errorMsg {
+  color: aliceblue;
+  font-size: 14px;
+  background: #000;
+  border-radius: 4px;
+  padding: 4px;
+  font-weight: 700;
+}
+
+.registerBtn {
+  margin-top: 1rem;
+  font-size: 16px;
+  color: #293462;
+  background: #F24C4C;
+  border: none;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.closeBtn mat-icon {
+  cursor: pointer;
+}
+
+.closeBtn mat-icon:hover {
+  background: #000;
+  border-radius: 100%;
+  color: white;
+}
+
+.password-inputs {
+  display: inline-block !important;
+  width: 80% !important;
+}
+
+.form-control .passSpan {
+  display: inline-block;
+  position: relative;
+  font-size: 13px;
+  left: 10px;
+  bottom: 1.5px;
+  width: auto;
+  text-align: center;
+  vertical-align: middle;
+  background: #000;
+  padding: 3px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-control .errSpan{
+  display: inline-block;
+  font-size: 13px;
+  margin: 4px;
+  color: #F24C4C;
+}
