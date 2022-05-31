@@ -25,6 +25,7 @@ export class RegisterFormComponent implements OnInit {
   passwordStrengthMsg: string = "";
 
   colorShadesForPasswordMsg: string = "#FF4949";
+  postUrl: string = "http://localhost:5100/";
 
   constructor() { }
 
@@ -296,6 +297,20 @@ export class RegisterFormComponent implements OnInit {
                 "dateOfBirth" : this.dateOfBirth.replace(/-/g, "/"),
                 "password"    : this.password
               }
+              fetch(this.postUrl, {
+                method: 'POST', // or 'PUT'
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newUserToRegister),
+              })
+              .then(response => response.json())
+              .then(data => {
+                console.log('Success:', data);
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
             }
           }
         }
