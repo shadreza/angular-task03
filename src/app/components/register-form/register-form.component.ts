@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TalkWithApiService } from 'src/app/services/talk-with-api.service';
 
 @Component({
   selector: 'app-register-form',
@@ -27,7 +28,7 @@ export class RegisterFormComponent implements OnInit {
   colorShadesForPasswordMsg: string = "#FF4949";
   postUrl: string = "http://localhost:5100/";
 
-  constructor() { }
+  constructor( private api: TalkWithApiService ) { }
 
   ngOnInit(): void {
   }
@@ -297,20 +298,24 @@ export class RegisterFormComponent implements OnInit {
                 "dateOfBirth" : this.dateOfBirth.replace(/-/g, "/"),
                 "password"    : this.password
               }
-              fetch(this.postUrl, {
-                method: 'POST', // or 'PUT'
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newUserToRegister),
+              // fetch(this.postUrl, {
+              //   method: 'POST', // or 'PUT'
+              //   headers: {
+              //     'Content-Type': 'application/json',
+              //   },
+              //   body: JSON.stringify(newUserToRegister),
+              // })
+              // .then(response => response.json())
+              // .then(data => {
+              //   console.log('Success:', data);
+              // })
+              // .catch((error) => {
+              //   console.error('Error:', error);
+              // });
+              const res = this.api.registerUser(newUserToRegister).subscribe(data => {
+                console.log('after the submission', data)
               })
-              .then(response => response.json())
-              .then(data => {
-                console.log('Success:', data);
-              })
-              .catch((error) => {
-                console.error('Error:', error);
-              });
+              console.log(res)
             }
           }
         }
