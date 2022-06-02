@@ -1,0 +1,18 @@
+<div class="single-user">
+  <div class="details">
+    <p><span>Username : </span> {{user.userName}}</p>
+    <p><span>Email : </span> {{user.email}}</p>
+    <p><span>Date Of Birth : </span> {{user.dateOfBirth}}</p>
+  </div>
+  <div class="icon">
+    <div *ngIf="!showEdit" class="edit">
+      <mat-icon (click)="openModal()">edit</mat-icon>
+    </div>
+    <div *ngIf="showEdit" class="save-or-delete">
+      <mat-icon (click)="openModal()">delete_forever</mat-icon>
+      <mat-icon (click)="openModal()">done</mat-icon>
+    </div>
+
+
+  </div>
+</div>

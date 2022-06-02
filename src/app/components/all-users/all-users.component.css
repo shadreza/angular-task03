@@ -1,0 +1,9 @@
+h3 {
+  text-align: center;
+}
+
+.users {
+  display: grid;
+  grid-template-columns: auto auto ;
+  justify-content: center;
+}

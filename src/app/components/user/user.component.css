@@ -1,0 +1,32 @@
+.single-user {
+  width: 300px;
+  margin: 2rem;
+  background-color: bisque;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.single-user .details {
+  width: auto;
+  overflow: auto;
+}
+
+.icon mat-icon {
+  border-radius: 100%;
+  background: #000;
+  padding: 4px;
+  cursor: pointer;
+  color: #F6FBF4;
+}
+
+.save-or-delete mat-icon {
+  display: block;
+  margin: 8px;
+}
+
+.single-user .details p span {
+  font-weight: bold;
+}

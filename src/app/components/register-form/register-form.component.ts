@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TalkWithApiService } from 'src/app/services/talk-with-api.service';
+import { USER } from '../../USER';
 
 @Component({
   selector: 'app-register-form',
@@ -287,31 +288,18 @@ export class RegisterFormComponent implements OnInit {
 
 
   onSubmit() {
+
     if (this.validateUsername(true)) {
       if (this.validateEmail(true)) {
         if (this.validateAge(true)) {
           if (this.validatePassword(true)) {
             if (this.validateConfirmPassword(true)) {
-              const newUserToRegister: JSON = <JSON><unknown>{
-                "userName"    : this.userName,
-                "email"       : this.email,
-                "dateOfBirth" : this.dateOfBirth.replace(/-/g, "/"),
-                "password"    : this.password
+              const newUserToRegister: USER = {
+                userName    : this.userName,
+                email       : this.email,
+                dateOfBirth : this.dateOfBirth.replace(/-/g, "/"),
+                password    : this.password
               }
-              // fetch(this.postUrl, {
-              //   method: 'POST', // or 'PUT'
-              //   headers: {
-              //     'Content-Type': 'application/json',
-              //   },
-              //   body: JSON.stringify(newUserToRegister),
-              // })
-              // .then(response => response.json())
-              // .then(data => {
-              //   console.log('Success:', data);
-              // })
-              // .catch((error) => {
-              //   console.error('Error:', error);
-              // });
               const res = this.api.registerUser(newUserToRegister).subscribe(data => {
                 console.log('after the submission', data)
               })
