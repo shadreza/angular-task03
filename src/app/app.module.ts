@@ -8,11 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AllUsersComponent } from './components/all-users/all-users.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    AllUsersComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

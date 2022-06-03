@@ -1,0 +1,74 @@
+.user-block {
+  width: 300px;
+  margin: 2rem;
+  background-color: bisque;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.single-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.single-user .details {
+  width: auto;
+  overflow: auto;
+}
+
+.icon mat-icon {
+  border-radius: 100%;
+  background: #000;
+  padding: 4px;
+  cursor: pointer;
+  color: #F6FBF4;
+}
+
+.edit #editBtn {
+  background: #293462;
+}
+
+.save-or-delete mat-icon {
+  display: block;
+  margin: 8px;
+}
+
+.save-or-delete #deleteBtn {
+  background: red;
+}
+
+.save-or-delete #saveBtn {
+  background: green;
+}
+
+.single-user .details p span {
+  font-weight: bold;
+}
+
+.edit-div {
+  margin: 0.75rem;
+}
+
+input {
+  display: block;
+  margin-top: 4px;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.titles-of-edit-div {
+  font-weight: bold;
+}
+
+.warning {
+  text-align: center;
+  margin-left: 0.8rem ;
+  color: coral;
+  font-weight: bolder;
+  font-size: 12px;
+}
+
+.require-password-field input {
+  margin-left: 0.75rem;
+}
