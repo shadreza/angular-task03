@@ -6,4 +6,17 @@ h3 {
   display: grid;
   grid-template-columns: auto auto ;
   justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 820px) {
+  .users {
+    grid-template-columns: auto ;
+  }
+}
+
+@media (min-width: 1200px) {
+  .users {
+    grid-template-columns: auto auto auto;
+  }
 }

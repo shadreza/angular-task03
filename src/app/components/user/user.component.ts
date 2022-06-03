@@ -13,12 +13,21 @@ export class UserComponent implements OnInit {
     dateOfBirth: "",
     password: ""
   };
-  showEdit: boolean = false;
+
+  modifiedUser: USER = this.user;
+  visibleDOB: string = "";
+  showEdit: boolean = true;
+  passwordValidityCheck: string = "";
+
+  updateVisibleDOB() {
+    this.visibleDOB = new Date(this.modifiedUser.dateOfBirth).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric"})
+  }
 
   constructor() { }
 
   ngOnInit(): void {
-    // console.log(this.user.userName)
+    this.modifiedUser = this.user
+    this.updateVisibleDOB()
   }
 
   openModal() {

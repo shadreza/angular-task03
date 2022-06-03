@@ -1,18 +1,39 @@
-<div class="single-user">
-  <div class="details">
-    <p><span>Username : </span> {{user.userName}}</p>
-    <p><span>Email : </span> {{user.email}}</p>
-    <p><span>Date Of Birth : </span> {{user.dateOfBirth}}</p>
-  </div>
-  <div class="icon">
-    <div *ngIf="!showEdit" class="edit">
-      <mat-icon (click)="openModal()">edit</mat-icon>
-    </div>
-    <div *ngIf="showEdit" class="save-or-delete">
-      <mat-icon (click)="openModal()">delete_forever</mat-icon>
-      <mat-icon (click)="openModal()">done</mat-icon>
+<div class="user-block">
+  <div class="single-user">
+    <div class="details">
+      <div class="edit-div">
+        <span class="titles-of-edit-div">Username : </span>
+        <span *ngIf="!showEdit">{{modifiedUser.userName}}</span>
+        <input *ngIf="showEdit" [(ngModel)]="modifiedUser.userName" type="text" placeholder={{modifiedUser.userName}}>
+      </div>
+
+      <div class="edit-div">
+        <span class="titles-of-edit-div">Email : </span>
+        <span *ngIf="!showEdit">{{modifiedUser.email}}</span>
+        <input *ngIf="showEdit" [(ngModel)]="modifiedUser.email" type="text" placeholder={{modifiedUser.email}}>
+      </div>
+
+      <div class="edit-div">
+        <span class="titles-of-edit-div">Date Of Birth : </span>
+        <span *ngIf="!showEdit">{{visibleDOB}}</span>
+        <input *ngIf="showEdit" [(ngModel)]="modifiedUser.dateOfBirth" type="date" placeholder={{modifiedUser.dateOfBirth}}>
+      </div>
     </div>
 
-
+    <div class="icon">
+      <div *ngIf="!showEdit" class="edit">
+        <mat-icon id="editBtn" (click)="openModal()">edit</mat-icon>
+      </div>
+      <div *ngIf="showEdit" class="save-or-delete">
+        <mat-icon id="deleteBtn" (click)="openModal()">delete_forever</mat-icon>
+        <mat-icon id="saveBtn" (click)="openModal()">done</mat-icon>
+      </div>
+    </div>
   </div>
+
+  <div class="require-password-field">
+    <input type="password" [(ngModel)]="passwordValidityCheck" placeholder="validate password">
+  </div>
+
+  <small class="warning" *ngIf="showEdit">Enter password to save changes</small>
 </div>

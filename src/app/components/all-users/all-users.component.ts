@@ -17,7 +17,7 @@ export class AllUsersComponent implements OnInit {
     {
       userName: "B",
       email: "b@a.com",
-      dateOfBirth: "04/02/1999",
+      dateOfBirth: "28/02/1999",
       password: "123456abasdASDcdeef"
     },
     {
@@ -28,9 +28,16 @@ export class AllUsersComponent implements OnInit {
     }
   ]
 
+  convertToDateFormat(date: string) {
+    return date[6] + date[7] + date[8] + date[9] + '-' + date[3] + date[4] + '-' + date[0] + date[1]
+  }
+
   constructor() { }
 
   ngOnInit(): void {
+    this.users.forEach(user => {
+      user.dateOfBirth = this.convertToDateFormat(user.dateOfBirth)
+    })
   }
 
 }
