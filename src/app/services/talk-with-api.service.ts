@@ -5,9 +5,9 @@ import { USER } from '../USER';
 @Injectable({
   providedIn: 'root'
 })
-  
+
 export class TalkWithApiService {
-  url: string = "http://three60.learnathon.net/api1/api/register"
+  url: string = "https://three60.learnathon.net/api1/api/register"
   constructor( private http:HttpClient ) { }
 
   // apiCall() {
