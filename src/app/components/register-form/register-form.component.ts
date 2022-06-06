@@ -14,6 +14,7 @@ export class RegisterFormComponent implements OnInit {
   password: string = "";
   reEnteredPassword: string = "";
   errorMessage: string = "";
+  birthday: string = "";
 
   showOrHidePassword: string = "hide";
   showOrHideConfirmPassword: string = "hide";
@@ -27,7 +28,6 @@ export class RegisterFormComponent implements OnInit {
   passwordStrengthMsg: string = "";
 
   colorShadesForPasswordMsg: string = "#FF4949";
-  postUrl: string = "http://localhost:5100/";
 
   constructor( private api: TalkWithApiService ) { }
 
@@ -58,7 +58,7 @@ export class RegisterFormComponent implements OnInit {
 
   getDate(date: string) {
     const a: string[] = date.split("-")
-    return new Date(parseInt(a[0]), parseInt(a[1])-1, parseInt(a[2]));
+    return new Date(parseInt(a[0]), parseInt(a[1]), parseInt(a[2]));
   }
 
   removeErrorBox() {
@@ -99,6 +99,10 @@ export class RegisterFormComponent implements OnInit {
     return false
   }
 
+  getBirthDay(dob: Date) {
+    return dob.getDate().toString() + "/" + dob.getMonth().toString() + "/" + dob.getFullYear().toString()
+  }
+
   validateAge(showErrorBoxOrNot: boolean) {
     if (!this.dateOfBirth) {
       if (showErrorBoxOrNot) {
@@ -111,14 +115,17 @@ export class RegisterFormComponent implements OnInit {
     const yearsLived: number = (today.getFullYear() - dob.getFullYear())
     if (yearsLived > 18) {
       this.removeErrorBox()
+      this.birthday = this.getBirthDay(dob)
       return true
     } else if (yearsLived == 18) {
       if (today.getMonth() > dob.getMonth()) {
         this.removeErrorBox()
+        this.birthday = this.getBirthDay(dob)
         return true
       } else if (today.getMonth() == dob.getMonth()) {
         if (today.getDate() >= dob.getDate()) {
           this.removeErrorBox()
+          this.birthday = this.getBirthDay(dob)
           return true
         }
       }
@@ -288,22 +295,22 @@ export class RegisterFormComponent implements OnInit {
 
 
   onSubmit() {
-
     if (this.validateUsername(true)) {
       if (this.validateEmail(true)) {
         if (this.validateAge(true)) {
           if (this.validatePassword(true)) {
             if (this.validateConfirmPassword(true)) {
-              const newUserToRegister: USER = {
-                userName    : this.userName,
-                email       : this.email,
-                dateOfBirth : this.dateOfBirth.replace(/-/g, "/"),
-                password    : this.password
+              const newUserToRegister: any = {
+                "username": this.userName,
+                "email": this.email,
+                "birthday": this.birthday,
+                "password": this.password,
+                "confirmPassword": this.reEnteredPassword
               }
               const res = this.api.registerUser(newUserToRegister).subscribe(data => {
-                console.log('after the submission', data)
+                console.log(data)
               })
-              console.log(res)
+              console.log(newUserToRegister)
             }
           }
         }

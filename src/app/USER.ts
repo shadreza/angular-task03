@@ -1,6 +1,7 @@
 export interface USER {
-  userName: string;
-  email: string;
-  dateOfBirth: string;
-  password: string;
+  "username": string,
+  "email": string,
+  "birthday": string,
+  "password": string,
+  "confirmPassword": string
 }
