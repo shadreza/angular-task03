@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import { USER } from '../USER';
+import { USER } from '../USER';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class TalkWithApiService {
     return this.http.get(this.url)
   }
 
-  registerUser(data: any) {
+  registerUser(data: USER) {
     return this.http.post(this.url, data)
   }
 }

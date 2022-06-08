@@ -100,7 +100,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   getBirthDay(dob: Date) {
-    return dob.getDate().toString() + "/" + dob.getMonth().toString() + "/" + dob.getFullYear().toString()
+    return dob.getFullYear().toString() + "-" + dob.getMonth().toString() + "-" + dob.getDate().toString()
   }
 
   validateAge(showErrorBoxOrNot: boolean) {
@@ -300,22 +300,23 @@ export class RegisterFormComponent implements OnInit {
         if (this.validateAge(true)) {
           if (this.validatePassword(true)) {
             if (this.validateConfirmPassword(true)) {
-              const newUserToRegister: any = {
+              const newUserToRegister: USER = {
                 "username": this.userName,
                 "email": this.email,
                 "birthday": this.birthday,
                 "password": this.password,
                 "confirmPassword": this.reEnteredPassword
               }
+              // console.log(newUserToRegister)
               const res = this.api.registerUser(newUserToRegister).subscribe(data => {
                 console.log(data)
+              }, error => {
+                console.log(error)
               })
-              console.log(newUserToRegister)
             }
           }
         }
       }
     }
   }
-
 }
